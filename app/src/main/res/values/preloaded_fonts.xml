@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array>
+        <item>@font/montserrat_thin</item>
+    </array>
+    <array>
+        <item>@font/montserrat_extralight</item>
+    </array>
+    <array>
+        <item>@font/montserrat_light</item>
+    </array>
+    <array>
+        <item>@font/montserrat</item>
+    </array>
+    <array>
+        <item>@font/montserrat_medium</item>
+    </array>
+    <array>
+        <item>@font/montserrat_semibold</item>
+    </array>
+    <array>
+        <item>@font/montserrat_bold</item>
+    </array>
+</resources>
