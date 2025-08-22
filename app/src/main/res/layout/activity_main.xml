@@ -2,6 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- AppBar -->
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
@@ -33,7 +35,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/menu" />
 
-                <!-- Imagem central -->
+                <!-- Imagem central da AppBar -->
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="100dp"
@@ -45,13 +47,183 @@
                     app:srcCompat="@drawable/triangulo_page" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
+        <!-- Conteúdo abaixo da AppBar -->
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+            android:layout_marginTop="146dp">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="20dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/dashed_border"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/proj1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="left"
+                        android:padding="8dp"
+                        android:text="Imagem 1"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="20dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/dashed_border"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/proj1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:padding="8dp"
+                        android:text="Imagem 2"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:gravity="left" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="20dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/dashed_border"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/proj1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:padding="8dp"
+                        android:text="Imagem 2"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:gravity="left" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="20dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/dashed_border"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/proj1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:padding="8dp"
+                        android:text="Imagem 2"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:gravity="left" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="20dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/dashed_border"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/proj1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:padding="8dp"
+                        android:text="Imagem 2"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:gravity="left" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="20dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/dashed_border"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/proj1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:padding="8dp"
+                        android:text="Imagem 2"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:gravity="left" />
+                </FrameLayout>
+
+            </GridLayout>
+
+        </ScrollView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -61,6 +233,4 @@
         android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"/>
-
 </androidx.drawerlayout.widget.DrawerLayout>
-
