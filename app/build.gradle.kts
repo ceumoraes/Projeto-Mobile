@@ -58,6 +58,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database") // ← TROQUEI Firestore por Database
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("jp.wasabeef:picasso-transformations:2.4.0")
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)

@@ -1,12 +1,17 @@
 package com.example.myapplication;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import com.squareup.picasso.Picasso;
 import java.util.List;
+import android.util.TypedValue;
 
 public class ProjetoActivity extends AppCompatActivity {
 
@@ -22,33 +27,60 @@ public class ProjetoActivity extends AppCompatActivity {
 
         mainImage = findViewById(R.id.mainImage);
         thumbContainer = findViewById(R.id.thumbContainer);
-
-        // Se adicionar os campos abaixo no XML, descomente:
-        // nomeProjeto = findViewById(R.id.nomeProjeto);
-        // descricaoProjeto = findViewById(R.id.descricaoProjeto);
+        nomeProjeto = findViewById(R.id.nomeProjeto);
+        descricaoProjeto = findViewById(R.id.descricaoProjeto);
 
         Projeto projeto = (Projeto) getIntent().getSerializableExtra("projeto");
-        if (projeto != null) {
-            Picasso.get().load(projeto.getImageUrl()).into(mainImage);
+        if (projeto == null) {
+            Toast.makeText(this, "Projeto não recebido!", Toast.LENGTH_LONG).show();
+            return;
+        }
 
-            // nomeProjeto.setText(projeto.getNome());
-            // descricaoProjeto.setText(projeto.getDescricao());
+        nomeProjeto.setText(projeto.getNome());
+        descricaoProjeto.setText(projeto.getDescricao());
 
-            List<String> galeria = projeto.getGaleria();
-            thumbContainer.removeAllViews();
-            if (galeria != null && galeria.size() > 0) {
-                for (String url : galeria) {
-                    ImageView thumb = new ImageView(this);
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                            0, LinearLayout.LayoutParams.MATCH_PARENT, 1f
-                    );
-                    params.setMargins(2, 2, 2, 2);
-                    thumb.setLayoutParams(params);
-                    thumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        Picasso.get().load(projeto.getImageUrl()).into(mainImage);
 
-                    Picasso.get().load(url).into(thumb);
-                    thumbContainer.addView(thumb);
+        List<String> galeria = projeto.getGaleria();
+        thumbContainer.removeAllViews();
+        if (galeria != null && !galeria.isEmpty()) {
+            int sizeInDp = 60;
+            int sizeInPx = (int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, sizeInDp, getResources().getDisplayMetrics());
+
+            for (int i = 0; i < galeria.size(); i++) {
+                final String url = galeria.get(i);
+                ImageView thumb = new ImageView(this);
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(sizeInPx, sizeInPx);
+                params.setMargins(12, 4, 12, 4);
+                thumb.setLayoutParams(params);
+
+                thumb.setPadding(6, 6, 6, 6);
+                thumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                // dashed_border com corner radius no drawable
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    thumb.setForeground(ContextCompat.getDrawable(this, R.drawable.dashed_border));
+                } else {
+                    thumb.setBackgroundResource(R.drawable.dashed_border);
                 }
+
+                // Converta 24dp para px (exemplo)
+                int radiusInDp = 60;
+                int radiusInPx = (int) TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, radiusInDp, getResources().getDisplayMetrics());
+
+                Picasso.get()
+                        .load(url)
+                        .transform(new RoundedCornersTransformation(radiusInPx, 0))
+                        .into(thumb);
+
+                thumb.setOnClickListener(v -> {
+                    Picasso.get().load(url).into(mainImage);
+                });
+
+                thumbContainer.addView(thumb);
             }
         }
     }
