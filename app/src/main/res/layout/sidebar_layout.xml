@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Behance"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/imageView3"
             app:layout_constraintStart_toEndOf="@id/barBehance"
             app:layout_constraintTop_toTopOf="@id/imageView3" />
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Instagram"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/imageView5"
             app:layout_constraintStart_toEndOf="@id/barInstagram"
             app:layout_constraintTop_toTopOf="@id/imageView5" />
@@ -139,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Youtube"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/imageView6"
             app:layout_constraintStart_toEndOf="@id/barYoutube"
             app:layout_constraintTop_toTopOf="@id/imageView6" />
@@ -171,7 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Bluesky"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/imageView4"
             app:layout_constraintStart_toEndOf="@id/barBluesky"
             app:layout_constraintTop_toTopOf="@id/imageView4" />

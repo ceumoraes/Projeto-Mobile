@@ -31,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         ImageButton menuButton = findViewById(R.id.menuButton);
 
+        TextView trabalhos = findViewById(R.id.textView3);
+        TextView selos = findViewById(R.id.textView4);
+        TextView contato = findViewById(R.id.textView5);
+
+        trabalhos.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
+
         menuButton.setOnClickListener(v -> {
             drawerLayout.openDrawer(GravityCompat.START);
         });
