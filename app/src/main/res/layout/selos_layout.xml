@@ -1,97 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- AppBar exatamente igual ao activity_main.xml -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <!-- Conteúdo principal -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="146dp">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- AppBar -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="146dp">
 
-            <ImageButton
-                android:id="@+id/menuButton"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/menuButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/menu"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/menu" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/triangulo_page" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Conteúdo dos selos abaixo da AppBar -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="146dp">
+
+            <LinearLayout
+                android:id="@+id/selosLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/menu"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/menu" />
+                android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/triangulo_page" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="start">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+                    <ImageView
+                        android:id="@+id/selo1"
+                        android:layout_width="300dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/kadea" />
+                </LinearLayout>
 
-    <!-- Coluna de selos -->
-    <LinearLayout
-        android:id="@+id/selosLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/appbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="end">
 
-        <!-- Selo 1 alinhado à ESQUERDA -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="start">
+                    <ImageView
+                        android:id="@+id/selo2"
+                        android:layout_width="300dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/lullaby" />
+                </LinearLayout>
 
-            <ImageView
-                android:id="@+id/selo1"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                android:src="@drawable/kadea" />
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="start">
 
-        <!-- Selo 2 alinhado à DIREITA -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="end">
+                    <ImageView
+                        android:id="@+id/selo3"
+                        android:layout_width="300dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/dgf" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <ImageView
-                android:id="@+id/selo2"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                android:src="@drawable/lullaby" />
-        </LinearLayout>
+    <!-- Sidebar via Fragment -->
+    <FrameLayout
+        android:id="@+id/sidebar_container"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"/>
 
-        <!-- Selo 3 alinhado à ESQUERDA -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="start">
-
-            <ImageView
-                android:id="@+id/selo3"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                android:src="@drawable/dgf" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

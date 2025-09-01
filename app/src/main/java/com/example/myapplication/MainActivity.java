@@ -7,11 +7,10 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.view.Gravity;
-
+import android.widget.TextView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import com.google.firebase.database.*;
@@ -28,17 +27,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Adiciona fragment da sidebar
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.sidebar_container, new SidebarFragment())
+                    .commit();
+        }
+
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         ImageButton menuButton = findViewById(R.id.menuButton);
-
-        TextView trabalhos = findViewById(R.id.textView3);
-        TextView selos = findViewById(R.id.textView4);
-        TextView contato = findViewById(R.id.textView5);
-
-        trabalhos.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(intent);
-        });
 
         menuButton.setOnClickListener(v -> {
             drawerLayout.openDrawer(GravityCompat.START);
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void preencherGridComProjetos() {
         gridLayout.removeAllViews();
-        gridLayout.setColumnCount(2); // Ajuste conforme seu layout
+        gridLayout.setColumnCount(2);
 
         for (Projeto projeto : projetosList) {
             CardView cardView = new CardView(this);

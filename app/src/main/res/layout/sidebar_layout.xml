@@ -177,5 +177,4 @@
             app:layout_constraintTop_toTopOf="@id/imageView4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </LinearLayout>

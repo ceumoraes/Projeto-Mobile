@@ -1,107 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- AppBar exatamente igual ao activity_main.xml -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <!-- Conteúdo principal -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="146dp">
+        android:layout_height="match_parent">
 
+        <!-- AppBar -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="146dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/menuButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/menu"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/menu" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/triangulo_page" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Conteúdo abaixo da AppBar -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="146dp">
 
-            <!-- Botão hambúrguer -->
-            <ImageButton
-                android:id="@+id/menuButton"
+            <TextView
+                android:id="@+id/nomeProjeto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/menu"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Nome do Projeto"
+                android:textAlignment="center"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/menu" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Imagem central da AppBar -->
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/mainImage"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/darker_gray"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nomeProjeto" />
+
+            <HorizontalScrollView
+                android:id="@+id/thumbScroll"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:fillViewport="true"
+                android:scrollbars="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/mainImage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/triangulo_page" />
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="16dp">
 
+                <LinearLayout
+                    android:id="@+id/thumbContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"/>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/descricaoProjeto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Descrição do projeto"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/thumbScroll" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <!-- Nome do projeto centralizado no topo -->
-    <TextView
-        android:id="@+id/nomeProjeto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Nome do Projeto"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar" />
+    <!-- Sidebar via Fragment -->
+    <FrameLayout
+        android:id="@+id/sidebar_container"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"/>
 
-    <!-- Imagem grande principal abaixo do título -->
-    <ImageView
-        android:id="@+id/mainImage"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/darker_gray"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nomeProjeto" />
-
-    <!-- Galeria dinâmica de miniaturas com rolagem horizontal abaixo da imagem principal -->
-    <HorizontalScrollView
-        android:id="@+id/thumbScroll"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:fillViewport="true"
-        android:scrollbars="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/mainImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="16dp">
-
-        <LinearLayout
-            android:id="@+id/thumbContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"/>
-    </HorizontalScrollView>
-
-    <!-- Descrição do projeto centralizada abaixo das miniaturas -->
-    <TextView
-        android:id="@+id/descricaoProjeto"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Descrição do projeto"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/thumbScroll" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

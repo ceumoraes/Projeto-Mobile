@@ -7,12 +7,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Conteúdo principal -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- AppBar -->
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
@@ -22,7 +20,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <!-- Botão hambúrguer -->
                 <ImageButton
                     android:id="@+id/menuButton"
                     android:layout_width="wrap_content"
@@ -35,7 +32,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/menu" />
 
-                <!-- Imagem central da AppBar -->
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="100dp"
@@ -49,32 +45,24 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <!-- Conteúdo abaixo da AppBar -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="146dp">
 
-            <!-- ADICIONEI O ID AQUI -->
             <GridLayout
                 android:id="@+id/gridLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:columnCount="2"
                 android:orientation="horizontal">
-
-                <!-- REMOVIDOS TODOS OS FrameLayouts ESTÁTICOS -->
-                <!-- O conteúdo será adicionado dinamicamente pelo Java -->
-
             </GridLayout>
 
         </ScrollView>
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <!-- Sidebar customizada via include -->
-    <include
-        layout="@layout/sidebar_layout"
+    <FrameLayout
+        android:id="@+id/sidebar_container"
         android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"/>

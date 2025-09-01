@@ -6,13 +6,12 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ContatoActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- AppBar -->
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
@@ -47,14 +46,12 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <!-- Conteúdo fixo abaixo da AppBar -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp"
             android:layout_marginTop="146dp">
 
-            <!-- Título -->
             <TextView
                 android:id="@+id/contactTitle"
                 android:layout_width="0dp"
@@ -69,8 +66,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
-
-            <!-- Descrição -->
             <TextView
                 android:id="@+id/contactDescription"
                 android:layout_width="0dp"
@@ -85,8 +80,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="8dp"/>
-
-            <!-- Qual seu nome? -->
             <TextView
                 android:id="@+id/nameLabel"
                 android:layout_width="wrap_content"
@@ -100,8 +93,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp"/>
-
-            <!-- Campo de nome -->
             <EditText
                 android:id="@+id/nameInput"
                 android:layout_width="0dp"
@@ -117,8 +108,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="8dp"/>
-
-            <!-- Qual seu e-mail? -->
             <TextView
                 android:id="@+id/emailLabel"
                 android:layout_width="wrap_content"
@@ -132,8 +121,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp"/>
-
-            <!-- Campo de e-mail -->
             <EditText
                 android:id="@+id/emailInput"
                 android:layout_width="0dp"
@@ -149,8 +136,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="8dp"/>
-
-            <!-- Sua mensagem -->
             <TextView
                 android:id="@+id/messageLabel"
                 android:layout_width="wrap_content"
@@ -164,8 +149,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp"/>
-
-            <!-- Campo de mensagem -->
             <EditText
                 android:id="@+id/messageInput"
                 android:layout_width="0dp"
@@ -183,8 +166,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="8dp"/>
-
-            <!-- Botão enviar -->
             <Button
                 android:id="@+id/sendButton"
                 android:layout_width="170dp"
@@ -198,12 +179,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <include
-        layout="@layout/sidebar_layout"
+    <FrameLayout
+        android:id="@+id/sidebar_container"
         android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"/>

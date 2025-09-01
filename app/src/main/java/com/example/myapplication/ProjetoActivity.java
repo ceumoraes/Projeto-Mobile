@@ -9,6 +9,9 @@ import android.widget.Toast;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import android.widget.ImageButton;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 import android.util.TypedValue;
@@ -24,6 +27,20 @@ public class ProjetoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.projeto_layout);
+
+        // Adiciona fragment da sidebar
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.sidebar_container, new SidebarFragment())
+                    .commit();
+        }
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> {
+            drawerLayout.openDrawer(GravityCompat.START);
+        });
 
         mainImage = findViewById(R.id.mainImage);
         thumbContainer = findViewById(R.id.thumbContainer);
@@ -59,14 +76,12 @@ public class ProjetoActivity extends AppCompatActivity {
                 thumb.setPadding(6, 6, 6, 6);
                 thumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-                // dashed_border com corner radius no drawable
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     thumb.setForeground(ContextCompat.getDrawable(this, R.drawable.dashed_border));
                 } else {
                     thumb.setBackgroundResource(R.drawable.dashed_border);
                 }
 
-                // Converta 24dp para px (exemplo)
                 int radiusInDp = 60;
                 int radiusInPx = (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP, radiusInDp, getResources().getDisplayMetrics());
