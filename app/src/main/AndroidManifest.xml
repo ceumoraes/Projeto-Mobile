@@ -46,7 +46,9 @@
         </activity>
 
         <activity android:name=".SelosActivity"/>
-        <activity android:name=".ContatoActivity"/>
+        <activity
+            android:name=".ContatoActivity"
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>
