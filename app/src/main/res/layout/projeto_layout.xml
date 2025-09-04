@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- DrawerLayout que permite criar um menu lateral -->
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <!-- Namespace padrão do android(atributos como android:id, android:text, etc.) -->
+    <!-- Namespace para bibliotecas externas ( AppCompat, etc)-->
+    <!-- Define um ID para o DrawerLayout, permitindo acessá-lo no código -->
+    <!-- Ocupa toda a largura da tela-->
+    <!-- Ocupa toda a altura da tela-->
 
     <!-- Conteúdo principal -->
+    <!-- Coordinatorlayout container que permite organizar elementos
+       de forma coordenada, principalmente junto com o AppBarLayout-->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+        <!-- Largura total da tela -->
+        <!-- altura total da tela -->
 
-        <!-- AppBar -->
+
+        <!-- AppBar/ barra superior -->
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="146dp">
+            <!-- ID da AppBar-->
+            <!-- Largura total da tela -->
+            <!-- Altura fixa de 146dp-->
 
+            <!-- ConstraintLayout para alinhar elementos com restrições -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="#FFFFFF">
+                <!-- Largura total da tela -->
+                <!-- Altura total da tela -->
 
                 <ImageButton
                     android:id="@+id/menuButton"
@@ -32,6 +52,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/menu" />
+                <!-- Botão de menu (abre sidebar)-->
+                <!-- Se ajusta ao conteúdo-->
+                <!-- Se ajusta ao conteúdo-->
+                <!-- Fundo clicável com efeito ripple-->
+                <!-- Descrição para acessibilidade -->
+                <!-- Alinhado na parte inferior -->
+                <!-- Fica antes da imagem-->
+                <!-- Encostado no lado esquerdo -->
+                <!-- Alinhado ao topo-->
+                <!-- Ícone do botão-->
+
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -42,6 +73,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:srcCompat="@drawable/triangulo_page" />
+                <!-- Imagem centralizada -->
+                <!-- Largura fixa-->
+                <!-- Altura fixa-->
+                <!-- Alinhado ao topo-->
+                <!-- Alinhado na base-->
+                <!-- Alinhado ao lado esquerdo-->
+                <!-- Alinhado ao lado direito-->
+                <!-- Imagem exibida-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
@@ -51,6 +90,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="146dp">
+            <!-- Largura total da tela -->
+            <!-- Altura total da tela -->
+            <!-- Começa abaixo do AppBar -->
 
             <TextView
                 android:id="@+id/nomeProjeto"
@@ -60,11 +102,24 @@
                 android:gravity="center"
                 android:text="Nome do Projeto"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 android:textSize="34sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            <!-- Texto do nome do projeto-->
+            <!-- Ajusta ao texto-->
+            <!-- Ajusta ao texto-->
+            <!-- Espaço ao topo-->
+            <!-- Centralizado dentro do TextView-->
+            <!-- Texto inicial-->
+            <!-- Alinhamento central-->
+            <!-- Tamanho da fonte-->
+            <!-- Estilo do texto (negrito)-->
+            <!-- Alinhado ao lado direito-->
+            <!-- Alinhado ao lado esquerdo-->
+            <!-- Alinhado ao topo-->
 
             <ImageView
                 android:id="@+id/mainImage"
@@ -76,6 +131,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/nomeProjeto" />
+            <!-- Imagem principal-->
+            <!-- Ocupa toda a largura-->
+            <!-- Altura fixa-->
+            <!-- Espaço acima-->
+            <!-- Fundo cinza-->
+            <!-- Ajusta sem cortar-->
+            <!-- Alinhado ao lado direito-->
+            <!-- Alinhado ao lado esquerdo-->
+            <!-- Alinhado abaixo do nome do projeto-->
 
             <HorizontalScrollView
                 android:id="@+id/thumbScroll"
@@ -88,6 +152,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="16dp">
+                <!-- Scroll horizontal para miniaturas -->
+                <!-- Largura controlada pelo constraint -->
+                <!-- Altura fixa -->
+                <!-- Faz conteúdo ocupar toda a tela -->
+                <!-- Barra de rolagem horizontal visível -->
+                <!-- Abaixo da imagem-->
+                <!-- Alinhado ao lado esquerdo -->
+                <!-- Alinhado ao lado direito -->
+                <!-- Espaço acima -->
+                <!-- Espaço abaixo -->
 
                 <LinearLayout
                     android:id="@+id/thumbContainer"
@@ -95,6 +169,11 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:gravity="center"/>
+                <!-- Container para as miniaturas-->
+                <!-- Ajusta ao conteúdo-->
+                <!-- Ocupa toda a altura-->
+                <!-- Itens em linha-->
+                <!-- Centraliza os itens-->
             </HorizontalScrollView>
 
             <TextView
@@ -105,10 +184,22 @@
                 android:gravity="center"
                 android:text="Descrição do projeto"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/thumbScroll" />
+            <!-- Texto da descrição-->
+            <!-- Controlado pelo constraint-->
+            <!-- Ajusta ao texto-->
+            <!-- Espaço acima-->
+            <!-- Centralizado dentro do TextView-->
+            <!-- Texto inicial-->
+            <!-- Centralizado na tela-->
+            <!-- Tamanho da fonte-->
+            <!-- Alinhado ao lado direito-->
+            <!-- Alinhado ao lado esquerdo-->
+            <!-- Alinhado abaixo das miniaturas-->
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -118,5 +209,8 @@
         android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"/>
-
+    <!-- Container do menu lateral-->
+    <!-- Largura fixa-->
+    <!-- Altura total da tela-->
+    <!-- Aparece ao lado esquerdo da tela-->
 </androidx.drawerlayout.widget.DrawerLayout>
