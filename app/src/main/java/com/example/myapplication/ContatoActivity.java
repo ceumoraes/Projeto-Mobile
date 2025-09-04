@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
 
 public class ContatoActivity extends AppCompatActivity {
 
@@ -43,10 +44,18 @@ public class ContatoActivity extends AppCompatActivity {
             if (nome.isEmpty() || email.isEmpty() || mensagem.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Mensagem enviada! Obrigado pelo contato.", Toast.LENGTH_LONG).show();
-                nameInput.setText("");
-                emailInput.setText("");
-                messageInput.setText("");
+                // Monta o Intent para enviar e-mail
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("message/rfc822");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"celestemoraes1706@gmail.com"}); // Altere para o e-mail que irá receber
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Contato pelo App");
+                intent.putExtra(Intent.EXTRA_TEXT, "Nome: " + nome + "\nEmail: " + email + "\nMensagem: " + mensagem);
+
+                try {
+                    startActivity(Intent.createChooser(intent, "Enviar e-mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(this, "Não há nenhum aplicativo de e-mail instalado.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
